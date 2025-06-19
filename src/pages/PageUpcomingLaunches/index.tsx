@@ -3,6 +3,7 @@ import { CustomTitle } from "../../components/atoms/CustomTitle";
 import { PublicTemplate } from "../../components/templates/PublicTemplate";
 import { useUpcomingLaunches } from "../../hooks/useUpcomingLaunches";
 import { AdvancedFilter } from "../../components/organisms/AdvancedFilter";
+import { LaunchCardContainer } from "../../components/organisms/LaunchCardContainer";
 
 export const PageUpcomingLaunches = () => {
   const { state, methods } = useUpcomingLaunches();
@@ -18,6 +19,13 @@ export const PageUpcomingLaunches = () => {
             activeFilter={state.activeCategory}
             categories={state.categories}
             handleChangeActiveFilter={methods.handleChangeActiveCategory}
+          />
+
+          <LaunchCardContainer
+            items={state.launches}
+            isFavourite={methods.isFavouriteLaunch}
+            handleToggleFavourite={methods.handleToggleFavouriteLaunch}
+            handleNavigateToDetail={methods.handleNavigateToLaunchDetail}
           />
         </Chakra.VStack>
       }
