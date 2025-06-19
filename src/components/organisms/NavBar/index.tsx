@@ -2,12 +2,8 @@ import * as Chakra from "@chakra-ui/react";
 import { CustomLogo } from "../../atoms/CustomLogo";
 import { LINKS } from "../../../data/links";
 import { CustomNavLink } from "../../atoms/CustomNavLink";
-import { useState } from "react";
-import { getNavLinkColor } from "../../../utils/getNavLinkColor";
 
 export const NavBar = () => {
-  const [hoveredLabel, setHoveredLabel] = useState<string>("");
-
   return (
     <Chakra.HStack as="nav" w="full">
       <Chakra.HStack w="full" justifyContent="space-between">
@@ -19,14 +15,7 @@ export const NavBar = () => {
                 key={link.label}
                 href={link.href}
                 label={link.label}
-                color={getNavLinkColor({
-                  hoverColor: "#707070",
-                  color: "#FFF",
-                  label: link.label,
-                  hoveredLabel: hoveredLabel,
-                })}
-                onMouseEnter={() => setHoveredLabel(link.label)}
-                onMouseLeave={() => setHoveredLabel("")}
+                color={"#FFF"}
               />
             );
           })}

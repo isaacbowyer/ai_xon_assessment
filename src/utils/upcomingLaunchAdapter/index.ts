@@ -1,14 +1,17 @@
-import type { ILaunch } from "../../interfaces/ILaunch";
-import type { ILaunchAPIResponse } from "../../interfaces/ILaunchAPIResponse";
+import type { IUpcomingLaunch } from "../../interfaces/IUpcomingLaunch";
+import type { IUpcomingLaunchAPIResponse } from "../../interfaces/IUpcomingLaunchAPIResponse";
+import { formatDate } from "../formatDate";
+import { getRocketType } from "../getRocketType";
 
-export const upcomingLaunchAdapter = (launch: ILaunchAPIResponse): ILaunch => {
+export const upcomingLaunchAdapter = (
+  launch: IUpcomingLaunchAPIResponse
+): IUpcomingLaunch => {
   return {
     id: launch.id,
     name: launch.name,
-    date: new Date(launch.date_utc),
-    details: launch.details,
-    rocket: launch.rocket,
-    location: launch.launchpad,
     flightNumber: launch.flight_number,
+    date: formatDate(launch.date_local),
+    rocketType: getRocketType(launch.cores.length),
+    numberOfCores: launch.cores.length,
   };
 };

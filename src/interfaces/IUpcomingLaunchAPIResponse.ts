@@ -1,4 +1,4 @@
-export interface ILaunchAPIResponse {
+export interface IUpcomingLaunchAPIResponse {
   fairings: null;
   links: ILink;
   static_fire_date_utc: string;
@@ -9,7 +9,6 @@ export interface ILaunchAPIResponse {
   rocket: string;
   success: boolean;
   failures: [];
-  details: string;
   crew: string[];
   ships: string[];
   capsules: string[];
