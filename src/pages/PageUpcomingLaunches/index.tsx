@@ -1,5 +1,26 @@
+import * as Chakra from "@chakra-ui/react";
+import { CustomTitle } from "../../components/atoms/CustomTitle";
 import { PublicTemplate } from "../../components/templates/PublicTemplate";
+import { useUpcomingLaunches } from "../../hooks/useUpcomingLaunches";
+import { AdvancedFilter } from "../../components/organisms/AdvancedFilter";
 
 export const PageUpcomingLaunches = () => {
-  return <PublicTemplate main={<div>Hello</div>} />;
+  const { state, methods } = useUpcomingLaunches();
+
+  return (
+    <PublicTemplate
+      main={
+        <Chakra.VStack w="full" h="full" gap={4}>
+          <CustomTitle title="UPCOMING LAUNCHES" />
+
+          <AdvancedFilter
+            name="Filter Launches"
+            activeFilter={state.activeCategory}
+            categories={state.categories}
+            handleChangeActiveFilter={methods.handleChangeActiveCategory}
+          />
+        </Chakra.VStack>
+      }
+    />
+  );
 };

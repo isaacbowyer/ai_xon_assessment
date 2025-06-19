@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PageUpcomingLaunches } from "./pages/PageUpcomingLaunches/index.tsx";
 import { PageLaunch } from "./pages/PageLaunch/index.tsx";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import { store } from "./store/index.ts";
+import { Provider as ReduxProvider } from "react-redux";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +20,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ChakraProvider value={defaultSystem}>
-      <RouterProvider router={router} />
-    </ChakraProvider>
+    <ReduxProvider store={store}>
+      <ChakraProvider value={defaultSystem}>
+        <RouterProvider router={router} />
+      </ChakraProvider>
+    </ReduxProvider>
   </StrictMode>
 );
