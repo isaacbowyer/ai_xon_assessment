@@ -4,15 +4,16 @@ import { PublicTemplate } from "../../components/templates/PublicTemplate";
 import { useUpcomingLaunches } from "../../hooks/useUpcomingLaunches";
 import { AdvancedFilter } from "../../components/organisms/AdvancedFilter";
 import { LaunchCardContainer } from "../../components/organisms/LaunchCardContainer";
+import { LoadingSpinner } from "../../components/atoms/LoadingSpinner";
+import { IllustrationStateEmpty } from "../../components/molecules/IllustrationState.Empty";
 
 export const PageUpcomingLaunches = () => {
   const { state, methods } = useUpcomingLaunches();
-
   return (
     <PublicTemplate
       main={
-        <Chakra.VStack w="full" h="full" gap={4}>
-          <CustomTitle title="UPCOMING LAUNCHES" />
+        <Chakra.VStack w="full" h="full" gap={8}>
+          <CustomTitle title="LAUNCHES" />
 
           <AdvancedFilter
             name="Filter Launches"
@@ -21,12 +22,23 @@ export const PageUpcomingLaunches = () => {
             handleChangeActiveFilter={methods.handleChangeActiveCategory}
           />
 
-          <LaunchCardContainer
-            items={state.launches}
-            isFavourite={methods.isFavouriteLaunch}
-            handleToggleFavourite={methods.handleToggleFavouriteLaunch}
-            handleNavigateToDetail={methods.handleNavigateToLaunchDetail}
-          />
+          {state.isLoading && <LoadingSpinner />}
+
+          {state.isSearchEmpty && (
+            <IllustrationStateEmpty
+              loadWhat="favourite launches"
+              handleOnClick={() => methods.handleChangeActiveCategory("All")}
+            />
+          )}
+
+          {state.hasResults && (
+            <LaunchCardContainer
+              items={state.launches}
+              isFavourite={methods.isFavouriteLaunch}
+              handleToggleFavourite={methods.handleToggleFavouriteLaunch}
+              handleNavigateToDetail={methods.handleNavigateToLaunchDetail}
+            />
+          )}
         </Chakra.VStack>
       }
     />

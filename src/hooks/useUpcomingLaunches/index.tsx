@@ -38,6 +38,8 @@ export const useUpcomingLaunches = () => {
       categories: categories,
       activeCategory: activeFilter,
       isLoading: isLaunchesLoading,
+      isSearchEmpty: activeFilter !== "All" && data.length === 0,
+      hasResults: !isLaunchesLoading && data.length > 0,
     },
     methods: {
       handleChangeActiveCategory: handleSetActiveFilter,

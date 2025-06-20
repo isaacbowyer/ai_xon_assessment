@@ -2,6 +2,8 @@ import * as Chakra from "@chakra-ui/react";
 import { generateRandomIcon } from "../../../utils/generateRandomIcon";
 
 export const LaunchCardIcon = () => {
+  const Icon = generateRandomIcon();
+
   return (
     <Chakra.Box
       position="relative"
@@ -17,12 +19,9 @@ export const LaunchCardIcon = () => {
       }}
       transition="transform 0.3s ease"
     >
-      <Chakra.Text
-        fontSize="3xl"
-        filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"
-      >
-        {generateRandomIcon()}
-      </Chakra.Text>
+      <Chakra.Icon fontSize="3xl" color="#FFF">
+        <Icon />
+      </Chakra.Icon>
     </Chakra.Box>
   );
 };

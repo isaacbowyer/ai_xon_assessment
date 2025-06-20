@@ -43,7 +43,6 @@ export const LaunchCardContainer = ({
           md: "repeat(2, 1fr)",
           lg: "repeat(3, 1fr)",
         }}
-        initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={containerVariants}

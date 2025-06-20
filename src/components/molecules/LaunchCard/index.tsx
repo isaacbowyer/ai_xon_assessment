@@ -45,7 +45,7 @@ export const LaunchCard = ({
         bg: "rgba(15, 23, 42, 0.98)",
         borderColor: "rgba(59, 130, 246, 0.3)",
       }}
-      onClick={() => onClick}
+      onClick={onClick}
       overflow="hidden"
     >
       <Chakra.Flex justify="space-between" align="flex-start" mb={8}>
