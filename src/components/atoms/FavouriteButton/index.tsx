@@ -4,7 +4,7 @@ import { validateOptionsBasedOnBoolean } from "../../../utils/validateOptionsBas
 
 interface IProps {
   isFavourite: boolean;
-  onToggleFavourite: () => void;
+  onToggleFavourite: (e: any) => void;
 }
 export const FavouriteButton = ({ isFavourite, onToggleFavourite }: IProps) => {
   const color = validateOptionsBasedOnBoolean(
@@ -23,6 +23,7 @@ export const FavouriteButton = ({ isFavourite, onToggleFavourite }: IProps) => {
     <Chakra.IconButton
       aria-label="Toggle favourite"
       onClick={(e) => {
+        e.stopPropagation();
         onToggleFavourite();
       }}
       variant="ghost"
