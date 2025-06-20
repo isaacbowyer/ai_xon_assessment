@@ -23,10 +23,6 @@ export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
     setFavourites([]);
   }, []);
 
-  useEffect(() => {
-    favouritesLocalStorage.setItem(favourites);
-  }, [favourites]);
-
   const isFavourite = (id: string) => favourites.includes(id);
 
   const handleToggleFavourite = (id: string) => {
@@ -35,6 +31,7 @@ export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
       ? favourites.filter((favs) => favs !== id)
       : [...favourites, id];
 
+    favouritesLocalStorage.setItem(newFavourites);
     setFavourites(newFavourites);
   };
 

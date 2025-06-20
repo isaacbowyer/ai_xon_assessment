@@ -11,5 +11,5 @@ export const displayRocketAndCores = (
     ""
   );
 
-  return `${rocketType} • ${numberOfCores} core${numberOfCoresMessage}}`;
+  return `${rocketType} • (${numberOfCores} core${numberOfCoresMessage})`;
 };
