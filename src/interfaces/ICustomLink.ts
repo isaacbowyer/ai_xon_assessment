@@ -1,4 +1,4 @@
-export interface INavLink {
+export interface ICustomLink {
   href: string;
   label: string;
 }

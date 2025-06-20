@@ -11,6 +11,7 @@ export const PageUpcomingLaunches = () => {
   const { state, methods } = useUpcomingLaunches();
   return (
     <PublicTemplate
+      bgGradient="linear-gradient(to bottom right, #1a202c, #2d3748, #1a202c)"
       main={
         <Chakra.VStack w="full" h="full" gap={8}>
           <CustomTitle title="LAUNCHES" />

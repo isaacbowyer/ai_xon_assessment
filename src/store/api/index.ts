@@ -4,6 +4,7 @@ import type { ILaunchpadAPIResponse } from "../../interfaces/ILaunchpadAPIRespon
 import type { IPayloadAPIResponse } from "../../interfaces/IPayloadAPIResponse";
 import { upcomingLaunchAdapter } from "../../utils/upcomingLaunchAdapter";
 import type { IUpcomingLaunch } from "../../interfaces/IUpcomingLaunch";
+import type { IRocketAPIResponse } from "../../interfaces/IRocketAPIResponse";
 
 export const spacexApi = createApi({
   reducerPath: "spacexApi",
@@ -28,7 +29,7 @@ export const spacexApi = createApi({
     }),
 
     // Fetch single rocket by ID (one per launch)
-    getRocketById: builder.query<ILaunchpadAPIResponse, string>({
+    getRocketById: builder.query<IRocketAPIResponse, string>({
       query: (id) => `rockets/${id}`,
       providesTags: ["Rocket"],
     }),

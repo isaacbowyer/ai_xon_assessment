@@ -1,3 +1,5 @@
+import type { ICore } from "./ICore";
+
 export interface IUpcomingLaunchAPIResponse {
   fairings: null;
   links: ILink;
@@ -46,16 +48,4 @@ interface ILink {
   youtube_id: string;
   article: string;
   wikipedia: string;
-}
-
-interface ICore {
-  core: string;
-  flight: number;
-  gridfins: boolean;
-  legs: boolean;
-  reused: boolean;
-  landing_attempt: boolean;
-  landing_success: boolean;
-  landing_type: string;
-  landpad: string;
 }
