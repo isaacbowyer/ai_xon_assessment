@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <PageUpcomingLaunches />,
   },
   {
-    path: "/launch/:id",
+    path: "/launches/:id",
     element: <PageLaunch />,
   },
 ]);

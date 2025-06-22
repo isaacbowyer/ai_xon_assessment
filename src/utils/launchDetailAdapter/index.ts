@@ -6,6 +6,7 @@ import type { IUpcomingLaunchAPIResponse } from "../../interfaces/IUpcomingLaunc
 import { formatDate } from "../formatDate";
 import { getReusedCoresCount } from "../getReusedCoresCount";
 import { launchDetailLinksAdapter } from "../launchDetailLinksAdapter";
+import { launchDetailPayloadsAdapter } from "../launchDetailPayloadsAdapter";
 
 interface IProps {
   payloads: IPayloadAPIResponse[];
@@ -30,9 +31,7 @@ export const launchDetailAdapter = ({
     numberOfCores: launch.cores?.length || 0,
     numberOfReusedCores: getReusedCoresCount(launch.cores),
     launchPadLocation: `${launchpad.region}, ${launchpad.locality}`,
-    payloads: payloads?.map(
-      (payload) => `${payload.name}, (${payload.type}, ${payload.mass_kg}kg)`
-    ),
+    payloads: launchDetailPayloadsAdapter(payloads),
     links: launchDetailLinksAdapter({
       wikipediaLink: launch?.links?.wikipedia || "",
       webcastLink: launch?.links?.webcast || "",

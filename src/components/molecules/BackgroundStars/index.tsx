@@ -5,7 +5,7 @@ export const BackgroundStars = () => (
     <Chakra.Box
       position="absolute"
       top="5rem"
-      left="2.5rem"
+      left="15rem"
       w="0.5rem"
       h="0.5rem"
       bg="blue.400"

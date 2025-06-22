@@ -1,6 +1,8 @@
 import * as Chakra from "@chakra-ui/react";
 import { StatItem } from "../../../../components/molecules/StatItem";
 import { DetailItem } from "../../../../components/molecules/DetailItem";
+import { FaCalendar, FaPlane } from "react-icons/fa";
+import { FaLocationPin } from "react-icons/fa6";
 
 interface IProps {
   rocketName: string;
@@ -38,7 +40,7 @@ export const DetailsSection = ({
       transition="all 0.5s"
       width="full"
     >
-      <Chakra.Heading size="lg" mb={6} color="#63B3ED">
+      <Chakra.Heading size="lg" mb={6} color="#FFF">
         Launch Details
       </Chakra.Heading>
 
@@ -52,16 +54,20 @@ export const DetailsSection = ({
       >
         <Chakra.Flex align="center" mb={3} gap={4}>
           <Chakra.Box>
-            <Chakra.Heading size="md" color="#FFFFFF">
+            <Chakra.Heading size="md" color="#FFF">
               {rocketName}
             </Chakra.Heading>
-            <Chakra.Text fontSize="sm" color="#90CDF4">
+            <Chakra.Text fontSize="sm" color="#FFF">
               {rocketDescription}
             </Chakra.Text>
           </Chakra.Box>
         </Chakra.Flex>
 
-        <Chakra.Grid templateColumns="repeat(2, 1fr)" gap={4} mt={4}>
+        <Chakra.Grid
+          templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+          gap={4}
+          mt={4}
+        >
           <StatItem label="Cores" value={numberOfCores} color="#9F7AEA" />
           <StatItem
             label="Reused Cores"
@@ -72,9 +78,17 @@ export const DetailsSection = ({
       </Chakra.Box>
 
       <Chakra.Stack gap={4}>
-        <DetailItem label="Launchpad:" value={launchPadLocation} />
-        <DetailItem label="Date:" value={date} />
-        <DetailItem label="Flight Number:" value={`#${flightNumber}`} />
+        <DetailItem
+          label="Launchpad:"
+          value={launchPadLocation}
+          Icon={FaLocationPin}
+        />
+        <DetailItem label="Date:" value={date} Icon={FaCalendar} />
+        <DetailItem
+          label="Flight Number:"
+          value={`#${flightNumber}`}
+          Icon={FaPlane}
+        />
       </Chakra.Stack>
     </Chakra.Box>
   );

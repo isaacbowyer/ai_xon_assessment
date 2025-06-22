@@ -9,9 +9,12 @@ import { launchDetailAdapter } from "../../utils/launchDetailAdapter";
 import type { IRocketAPIResponse } from "../../interfaces/IRocketAPIResponse";
 import type { ILaunchpadAPIResponse } from "../../interfaces/ILaunchpadAPIResponse";
 import type { IUpcomingLaunchAPIResponse } from "../../interfaces/IUpcomingLaunchAPIResponse";
+import { useFavouritesContext } from "../../context/useGetFavourites";
 
 export const useLaunchDetail = () => {
   const { id } = useParams();
+
+  const { handleToggleFavourite, isFavourite } = useFavouritesContext();
 
   const { data: launch, isLoading: isLaunchLoading } =
     useGetUpcomingLaunchByIdQuery(id || "", {
@@ -52,7 +55,10 @@ export const useLaunchDetail = () => {
     state: {
       launch: formattedLaunch,
       isLoading: isLoading,
+      isFavourite: isFavourite(formattedLaunch.id),
     },
-    methods: {},
+    methods: {
+      handleToggleFavourite: handleToggleFavourite,
+    },
   };
 };

@@ -1,15 +1,18 @@
 import type { ICustomLink } from "../../interfaces/ICustomLink";
 
 export interface IProps {
-  wikipediaLink: string;
-  webcastLink: string;
-  articleLink: string;
+  wikipediaLink?: string;
+  webcastLink?: string;
+  articleLink?: string;
 }
 
 export const launchDetailLinksAdapter = (payload: IProps): ICustomLink[] => {
   return [
-    { label: "Article", href: payload.articleLink },
-    { label: "Webcast", href: payload.webcastLink },
-    { label: "Wikipedia", href: payload.wikipediaLink },
-  ];
+    payload.articleLink && { label: "Article", href: payload.articleLink },
+    payload.webcastLink && { label: "Webcast", href: payload.webcastLink },
+    payload.wikipediaLink && {
+      label: "Wikipedia",
+      href: payload.wikipediaLink,
+    },
+  ].filter(Boolean) as ICustomLink[];
 };

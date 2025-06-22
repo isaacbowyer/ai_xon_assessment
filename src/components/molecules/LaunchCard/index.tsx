@@ -1,11 +1,10 @@
 import * as Chakra from "@chakra-ui/react";
-import { FaRocket } from "react-icons/fa";
-import { MdCalendarToday } from "react-icons/md";
 import { LaunchCardIcon } from "../LaunchCardIcon";
-import { FavouriteButton } from "../../atoms/FavouriteButton";
+import { CustomIconButton } from "../../atoms/CustomIconButton";
 import { ViewLaunchDetails } from "../ViewLaunchDetails";
 import { CustomBadge } from "../../atoms/CustomBadge";
 import { LaunchCardMissionDetails } from "../LaunchCardMissionDetails";
+import { FaHeart } from "react-icons/fa";
 
 interface IProps {
   flightNumber: number;
@@ -51,9 +50,10 @@ export const LaunchCard = ({
       <Chakra.Flex justify="space-between" align="flex-start" mb={8}>
         <LaunchCardIcon />
 
-        <FavouriteButton
-          isFavourite={isFavourite}
-          onToggleFavourite={onToggleFavourite}
+        <CustomIconButton
+          isLiked={isFavourite}
+          onToggleClick={onToggleFavourite}
+          Icon={FaHeart}
         />
       </Chakra.Flex>
 
