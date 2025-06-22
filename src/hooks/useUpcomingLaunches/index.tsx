@@ -17,7 +17,7 @@ export const useUpcomingLaunches = () => {
   };
 
   const handleNavigateToLaunchDetail = (id: string) => {
-    navigate(`/launch/${id}`);
+    navigate(`/launches/${id}`);
   };
 
   const { favourites, isFavourite, handleToggleFavourite } =

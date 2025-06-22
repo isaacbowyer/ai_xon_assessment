@@ -15,7 +15,7 @@ export const CustomLink = ({ href, label }: IProps) => {
       _hover={{ textDecoration: "underline" }}
       _focus={{ outline: "none" }}
     >
-      <FaLink />
+      <FaLink color="#CBD5E0" />
       {label}
     </Chakra.Link>
   );
