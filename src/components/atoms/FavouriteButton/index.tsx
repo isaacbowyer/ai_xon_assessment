@@ -1,5 +1,6 @@
 import * as Chakra from "@chakra-ui/react";
 import { FaHeart } from "react-icons/fa";
+import { getFavouriteBtnStyles } from "../../../utils/getFavouriteBtnStyles";
 
 interface IProps {
   isLiked: boolean;
@@ -7,6 +8,8 @@ interface IProps {
 }
 
 export const FavouriteButton = ({ isLiked, onToggleClick }: IProps) => {
+  const { borderColor, bgColor, color } = getFavouriteBtnStyles(isLiked);
+
   return (
     <Chakra.Button
       onClick={onToggleClick}
@@ -23,15 +26,15 @@ export const FavouriteButton = ({ isLiked, onToggleClick }: IProps) => {
         borderColor: "#FFF",
         color: "#FFF",
       }}
-      bg={isLiked ? "rgba(239, 68, 68, 0.2)" : "rgba(55, 65, 81, 0.5)"}
-      color={isLiked ? "#f87171" : "#9ca3af"}
-      borderColor={isLiked ? "rgba(239, 68, 68, 0.5)" : "rgba(75, 85, 99, 0.5)"}
+      bg={bgColor}
+      color={color}
+      borderColor={borderColor}
     >
       <Chakra.Icon
         as={FaHeart}
         boxSize={5}
         transition="all 0.3s ease"
-        color={isLiked ? "red.400" : "gray.400"}
+        color={color}
       />
       <Chakra.Text>{isLiked ? "Liked" : "Like"}</Chakra.Text>
     </Chakra.Button>

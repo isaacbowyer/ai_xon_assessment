@@ -9,6 +9,7 @@ import { IllustrationStateEmpty } from "../../components/molecules/IllustrationS
 
 export const PageUpcomingLaunches = () => {
   const { state, methods } = useUpcomingLaunches();
+
   return (
     <PublicTemplate
       bgGradient="linear-gradient(to bottom right, #1a202c, #2d3748, #1a202c)"
@@ -35,9 +36,12 @@ export const PageUpcomingLaunches = () => {
           {state.hasResults && (
             <LaunchCardContainer
               items={state.launches}
+              currentPage={state.currentPage}
+              totalPages={state.totalPages}
               isFavourite={methods.isFavouriteLaunch}
               handleToggleFavourite={methods.handleToggleFavouriteLaunch}
               handleNavigateToDetail={methods.handleNavigateToLaunchDetail}
+              handleChangeCurrentPage={methods.handleChangeCurrentPage}
             />
           )}
         </Chakra.VStack>

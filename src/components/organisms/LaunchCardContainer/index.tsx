@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import * as Chakra from "@chakra-ui/react";
 import { LaunchCard } from "../../molecules/LaunchCard";
 import type { IUpcomingLaunch } from "../../../interfaces/IUpcomingLaunch";
+import { CustomPagination } from "../../molecules/CustomPagination";
+import { useRef } from "react";
 
 const MotionGrid = motion.create(Chakra.Grid);
 
@@ -21,19 +23,32 @@ const containerVariants = {
 
 interface IProps {
   items: IUpcomingLaunch[];
+  currentPage: number;
+  totalPages: number;
   isFavourite: (id: string) => boolean;
   handleToggleFavourite: (id: string) => void;
   handleNavigateToDetail: (id: string) => void;
+  handleChangeCurrentPage: (page: number) => void;
 }
 
 export const LaunchCardContainer = ({
   items,
+  currentPage,
+  totalPages,
   isFavourite,
   handleToggleFavourite,
   handleNavigateToDetail,
+  handleChangeCurrentPage,
 }: IProps) => {
+  const containerTopRef = useRef<HTMLDivElement>(null);
+
+  const handlePageChange = (page: number) => {
+    handleChangeCurrentPage(page);
+    containerTopRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <Chakra.VStack alignItems="start" justifyContent="start" width="full">
+    <Chakra.VStack width="full" ref={containerTopRef}>
       <MotionGrid
         width="full"
         layout
@@ -61,6 +76,12 @@ export const LaunchCardContainer = ({
           />
         ))}
       </MotionGrid>
+
+      <CustomPagination
+        pageCount={totalPages}
+        currentPage={currentPage}
+        onChangeCurrentPage={handlePageChange}
+      />
     </Chakra.VStack>
   );
 };
