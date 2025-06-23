@@ -1,4 +1,4 @@
-export const paginateData = <T>(payload: IPayload<T>) => {
+export const paginateData = <T>(payload: IPayload<T>): T[] => {
   return payload.data.slice(
     (payload.currentPage - 1) * payload.itemsPerPage,
     payload.currentPage * payload.itemsPerPage
