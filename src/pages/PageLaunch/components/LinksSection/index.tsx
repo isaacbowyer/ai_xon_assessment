@@ -7,12 +7,9 @@ interface IProps {
 }
 
 export const LinksSection = ({ links }: IProps) => {
-  const bgGradientMain =
-    "linear-gradient(to bottom right, rgba(255, 115, 64, 0.25), rgba(255, 166, 90, 0.2))";
-
   return (
     <Chakra.Box
-      bgGradient={bgGradientMain}
+      bgGradient="linear-gradient(to bottom right, rgba(255, 115, 64, 0.25), rgba(255, 166, 90, 0.2))"
       backdropFilter="blur(10px)"
       borderRadius="2xl"
       p={6}

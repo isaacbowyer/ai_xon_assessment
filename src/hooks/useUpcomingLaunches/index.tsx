@@ -8,9 +8,11 @@ import { calculatePagesQuantity } from "../../utils/calculatePagesQuanity";
 import { SERVICES_LIMITS } from "../../data/service";
 import { paginateData } from "../../utils/paginateData";
 
+const DEFAULT_PAGE = 1;
+
 const INITAL_STATE: IUseUpcomingLaunchesState = {
   activeFilter: "All",
-  currentLaunchesPage: 1,
+  currentLaunchesPage: DEFAULT_PAGE,
 };
 
 export const useUpcomingLaunches = () => {
@@ -21,10 +23,10 @@ export const useUpcomingLaunches = () => {
   const categories: IFilterCategory[] = ["All", "Favourites"];
 
   const handleSetActiveFilter = (newFilter: IFilterCategory) => {
-    setState((prev) => ({
-      ...prev,
+    setState({
       activeFilter: newFilter,
-    }));
+      currentLaunchesPage: DEFAULT_PAGE,
+    });
   };
 
   const handleSetCurrentPage = (newPage: number) => {
@@ -51,7 +53,7 @@ export const useUpcomingLaunches = () => {
     activeFilter: state.activeFilter,
   });
 
-  const totalCount = launches?.length || 0;
+  const totalCount = filteredLaunches?.length || 0;
   const totalPages = calculatePagesQuantity(totalCount);
 
   const paginatedData = paginateData({

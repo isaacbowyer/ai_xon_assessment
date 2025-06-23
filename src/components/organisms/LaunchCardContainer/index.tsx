@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import * as Chakra from "@chakra-ui/react";
 import { LaunchCard } from "../../molecules/LaunchCard";
 import type { IUpcomingLaunch } from "../../../interfaces/IUpcomingLaunch";
-import { CustomPagination } from "../../molecules/CustomPagination";
-import { useRef } from "react";
 
 const MotionGrid = motion.create(Chakra.Grid);
 
@@ -33,22 +31,12 @@ interface IProps {
 
 export const LaunchCardContainer = ({
   items,
-  currentPage,
-  totalPages,
   isFavourite,
   handleToggleFavourite,
   handleNavigateToDetail,
-  handleChangeCurrentPage,
 }: IProps) => {
-  const containerTopRef = useRef<HTMLDivElement>(null);
-
-  const handlePageChange = (page: number) => {
-    handleChangeCurrentPage(page);
-    containerTopRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <Chakra.VStack width="full" ref={containerTopRef}>
+    <Chakra.VStack width="full">
       <MotionGrid
         width="full"
         layout
@@ -76,12 +64,6 @@ export const LaunchCardContainer = ({
           />
         ))}
       </MotionGrid>
-
-      <CustomPagination
-        pageCount={totalPages}
-        currentPage={currentPage}
-        onChangeCurrentPage={handlePageChange}
-      />
     </Chakra.VStack>
   );
 };

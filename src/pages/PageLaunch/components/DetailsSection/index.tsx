@@ -23,14 +23,9 @@ export const DetailsSection = ({
   date,
   flightNumber,
 }: IProps) => {
-  const bgGradientMain =
-    "linear-gradient(to bottom, rgba(45,55,72,0.6), rgba(26,32,44,0.6))";
-  const bgGradientRocket =
-    "linear-gradient(to right, rgba(49,130,206,0.3), rgba(128,90,213,0.3))";
-
   return (
     <Chakra.Box
-      bgGradient={bgGradientMain}
+      bgGradient="linear-gradient(to bottom, rgba(45,55,72,0.6), rgba(26,32,44,0.6))"
       backdropFilter="blur(10px)"
       borderRadius="2xl"
       p={6}
@@ -45,7 +40,7 @@ export const DetailsSection = ({
       </Chakra.Heading>
 
       <Chakra.Box
-        bgGradient={bgGradientRocket}
+        bgGradient="linear-gradient(to right, rgba(49,130,206,0.3), rgba(128,90,213,0.3))"
         borderRadius="xl"
         p={4}
         mb={6}

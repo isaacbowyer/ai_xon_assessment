@@ -1,4 +1,5 @@
 import type { ICustomLink } from "./ICustomLink";
+import type { ILaunchPayload } from "./ILaunchPayload";
 
 export interface ILaunchDetail {
   id: string;
@@ -10,6 +11,6 @@ export interface ILaunchDetail {
   numberOfCores: number;
   numberOfReusedCores: number;
   launchPadLocation: string;
-  payloads: string[];
+  payloads: ILaunchPayload[];
   links: ICustomLink[];
 }
