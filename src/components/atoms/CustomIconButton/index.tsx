@@ -1,5 +1,4 @@
 import * as Chakra from "@chakra-ui/react";
-import { FaHeart } from "react-icons/fa";
 import { validateOptionsBasedOnBoolean } from "../../../utils/validateOptionsBasedOnBoolean";
 import type { IconType } from "react-icons";
 
