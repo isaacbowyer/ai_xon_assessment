@@ -7,8 +7,6 @@ interface IProps {
   color?: string;
   hoverColor?: string;
   fontWeight?: string;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
 }
 
 export const CustomNavLink = ({
@@ -17,15 +15,9 @@ export const CustomNavLink = ({
   color = "#111",
   hoverColor = "#228BE6",
   fontWeight = "bold",
-  onMouseEnter,
-  onMouseLeave,
 }: IProps) => {
   return (
-    <RouterLink
-      to={href}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
+    <RouterLink to={href}>
       <Chakra.Text
         letterSpacing="0.5px"
         lineHeight="1.25"

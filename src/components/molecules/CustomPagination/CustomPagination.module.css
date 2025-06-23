@@ -1,0 +1,58 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  list-style: none;
+  padding: 1rem 0;
+  gap: 0.25rem;
+}
+
+.pageClassName {
+  color: #a0aec0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pageClassName:hover {
+  color: #fff;
+  background-color: #4a5568;
+}
+
+.activeClassName {
+  color: #fff;
+  background-color: #805ad5;
+}
+
+.breakLinkClassName {
+  color: #718096;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.nextAndPrevious {
+  color: #a0aec0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nextAndPrevious:hover {
+  color: #fff;
+  background-color: #4a5568;
+}

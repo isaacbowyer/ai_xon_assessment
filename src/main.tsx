@@ -4,6 +4,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PageUpcomingLaunches } from "./pages/PageUpcomingLaunches/index.tsx";
 import { PageLaunch } from "./pages/PageLaunch/index.tsx";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import { store } from "./store/index.ts";
+import { Provider as ReduxProvider } from "react-redux";
+import { FavouritesProvider } from "./context/useGetFavourites/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -11,15 +14,19 @@ const router = createBrowserRouter([
     element: <PageUpcomingLaunches />,
   },
   {
-    path: "/launch/:id",
+    path: "/launches/:id",
     element: <PageLaunch />,
   },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ChakraProvider value={defaultSystem}>
-      <RouterProvider router={router} />
-    </ChakraProvider>
+    <ReduxProvider store={store}>
+      <ChakraProvider value={defaultSystem}>
+        <FavouritesProvider>
+          <RouterProvider router={router} />
+        </FavouritesProvider>
+      </ChakraProvider>
+    </ReduxProvider>
   </StrictMode>
 );

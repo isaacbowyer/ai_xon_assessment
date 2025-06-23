@@ -5,9 +5,10 @@ import { NavBar } from "../../organisms/NavBar";
 
 interface IProps {
   main: ReactNode;
+  bgGradient: string;
 }
 
-export const PublicTemplate = ({ main }: IProps) => {
+export const PublicTemplate = ({ main, bgGradient }: IProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -17,7 +18,7 @@ export const PublicTemplate = ({ main }: IProps) => {
       h="100vh"
       w="100vw"
       justifyContent="space-between"
-      backgroundGradient="linear-gradient(to bottom right, #1a202c, #2d3748, #1a202c)"
+      backgroundGradient={bgGradient}
       px={4}
       css={{
         "&::-webkit-scrollbar": {
@@ -32,7 +33,7 @@ export const PublicTemplate = ({ main }: IProps) => {
         },
       }}
     >
-      <Chakra.VStack maxW="1200px" width="full" overflow="visible">
+      <Chakra.VStack maxW="1200px" width="full" overflow="visible" pb={4}>
         <NavBar />
         {main}
       </Chakra.VStack>
