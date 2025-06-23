@@ -21,9 +21,12 @@ const containerVariants = {
 
 interface IProps {
   items: IUpcomingLaunch[];
+  currentPage: number;
+  totalPages: number;
   isFavourite: (id: string) => boolean;
   handleToggleFavourite: (id: string) => void;
   handleNavigateToDetail: (id: string) => void;
+  handleChangeCurrentPage: (page: number) => void;
 }
 
 export const LaunchCardContainer = ({
@@ -33,7 +36,7 @@ export const LaunchCardContainer = ({
   handleNavigateToDetail,
 }: IProps) => {
   return (
-    <Chakra.VStack alignItems="start" justifyContent="start" width="full">
+    <Chakra.VStack width="full">
       <MotionGrid
         width="full"
         layout

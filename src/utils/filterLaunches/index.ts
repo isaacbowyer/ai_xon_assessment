@@ -11,7 +11,6 @@ export const filterLaunches = (payload: IPayload): IUpcomingLaunch[] => {
 
   if (payload.activeFilter === "All") return payload.launches;
 
-  // "Favourites"
   return payload.launches.filter((launch) =>
     payload.favourties.includes(launch.id)
   );

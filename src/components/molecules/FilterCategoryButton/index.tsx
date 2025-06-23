@@ -2,6 +2,7 @@ import * as Chakra from "@chakra-ui/react";
 import type { IFilterCategory } from "../../../interfaces/IFilterCategory";
 import { getFilterBtnStyles } from "../../../utils/getFilterBtnStyles";
 import { FaRocket, FaHeart } from "react-icons/fa";
+import { validateOptionsBasedOnBoolean } from "../../../utils/validateOptionsBasedOnBoolean";
 
 interface IProps {
   item: IFilterCategory;
@@ -17,7 +18,8 @@ export const FilterCategoryButton = ({
   const isActive = activeFilter === item;
 
   const { normalState, hoverState } = getFilterBtnStyles(isActive);
-  const Icon = item === "All" ? FaRocket : FaHeart;
+  const isAllFilter = item === "All";
+  const Icon = validateOptionsBasedOnBoolean(isAllFilter, FaRocket, FaHeart);
 
   return (
     <Chakra.Button

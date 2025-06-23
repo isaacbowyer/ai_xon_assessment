@@ -1,19 +1,27 @@
 import * as Chakra from "@chakra-ui/react";
+import type { ILaunchPayload } from "../../../../interfaces/ILaunchPayload";
+import { PayloadCardContainer } from "../../../../components/organisms/PayloadCardContainer";
+import { CustomPagination } from "../../../../components/molecules/CustomPagination";
+import { SubHeader } from "../../../../components/organisms/SubHeader";
 
 interface IProps {
-  payloads: string[];
+  payloads: ILaunchPayload[];
+  totalPages: number;
+  totalCount: number;
+  currentPage: number;
+  handleChangePayloadPage: (newPage: number) => void;
 }
 
-export const PayloadSection = ({ payloads }: IProps) => {
-  const bgGradientMain =
-    "linear-gradient(to bottom right, rgba(128, 90, 213, 0.25), rgba(103, 72, 201, 0.2))";
-
-  const cardGradient =
-    "linear-gradient(to right, rgba(128, 90, 213, 0.4), rgba(103, 72, 201, 0.3))";
-
+export const PayloadSection = ({
+  payloads,
+  totalPages,
+  totalCount,
+  currentPage,
+  handleChangePayloadPage,
+}: IProps) => {
   return (
     <Chakra.Box
-      bgGradient={bgGradientMain}
+      bgGradient="linear-gradient(to bottom right, rgba(128, 90, 213, 0.25), rgba(103, 72, 201, 0.2))"
       backdropFilter="blur(10px)"
       borderRadius="2xl"
       p={6}
@@ -27,26 +35,23 @@ export const PayloadSection = ({ payloads }: IProps) => {
         Payload Details
       </Chakra.Heading>
 
-      <Chakra.Stack gap={4}>
-        {payloads.map((payload, index) => (
-          <Chakra.Box
-            key={index}
-            bgGradient={cardGradient}
-            p={4}
-            borderRadius="xl"
-            border="1px"
-            borderColor="#805AD5"
-            boxShadow="md"
-            color="#E9D8FD"
-            transition="transform 0.3s ease-in-out"
-            _hover={{ transform: "translateX(6px)" }} // subtle right shift
-          >
-            <Chakra.Text fontSize="md" fontWeight="medium">
-              {payload}
-            </Chakra.Text>
-          </Chakra.Box>
-        ))}
-      </Chakra.Stack>
+      <SubHeader
+        itemsLabel="payloads"
+        currentPage={currentPage}
+        pageCount={totalPages}
+        entriesCount={totalCount}
+        currentEntries={payloads.length}
+      />
+
+      <PayloadCardContainer payloads={payloads} />
+
+      <Chakra.HStack w="full" justifyContent="center">
+        <CustomPagination
+          pageCount={totalPages}
+          currentPage={currentPage}
+          onChangeCurrentPage={handleChangePayloadPage}
+        />
+      </Chakra.HStack>
     </Chakra.Box>
   );
 };

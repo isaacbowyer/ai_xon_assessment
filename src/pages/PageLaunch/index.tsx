@@ -41,8 +41,15 @@ export const PageLaunch = () => {
                 launchPadLocation={state.launch.launchPadLocation}
                 date={state.launch.date}
               />
+
               {!!state.launch.payloads.length && (
-                <PayloadSection payloads={state.launch.payloads} />
+                <PayloadSection
+                  payloads={state.launch.payloads}
+                  currentPage={state.currentPayloadPage}
+                  totalPages={state.totalPages}
+                  totalCount={state.count}
+                  handleChangePayloadPage={methods.handleChangeCurrentPage}
+                />
               )}
 
               {!!state.launch.links.length && (
